@@ -32,7 +32,6 @@ population["fitness"] = None
 
 Elimizdeki populasyon aşağıdaki gibi oluştu.
 
-<img src="images/population_1.jpg" width="500">
 
 ````
        0   1    2    3   4   5   6    7   8   9 fitness
@@ -143,13 +142,53 @@ Artık bu en iyi genlere sahip ilk 10 bireyden yeni bireyler üretebiliriz.  Ça
 
 ````
 def crossover(besties):
-    pop_child_comb = []
-    for i in range(10):
-        pop_child_comb.append(list( set(besties.iloc[:,i].values) ))
+    childs = []
+    for i in range(50):
+        cocuk = []
+        for j in range(10):
+            # besties listesindeki her sütundan rastgele bir sayı seçiyoruz.
+            cocuk.append(random.choice(besties.iloc[:,j].values)) 
+        childs.append(cocuk)
+    childs = pd.DataFrame(childs)
+    return childs
 
-
+childs = crossover(besties)
 ````
 
+Çaprazlamanın nasıl çalıştığına dair bir örneği aşağıda görebilirsiniz. 
+
+<img src="images/crossover.jpg" width="500">
+
+Artık elimizde 50 tane çocuk var. Her nesili 100 bireye tamamlamak için 50 tane mutasyon yapalım. Mutasyon elimizdeki toplam populasyondan tamamen rastgele 50 birey almaktan farklı bir şey değil. 
+
+````
+def mutation(population):
+    mutant = population.sample(n=50)
+    return mutant
+    
+mutant = mutation(population)
+````
+
+Artık çocukları ve mutantları birleştirip 1.nesili oluşturabiliriz. 
+````
+generation = pd.concat([childs,mutant])
+
+       0   1   2   3   4   5   6   7    8   9 fitness
+0     94  92  26  36  31  10  76   8   87  73    None
+1     88  53  35  24  56  28  67  43   61  48    None
+2     56  73  26  83  89  86  76  26   75  62    None
+3     56  96  81  18  57  86  55  20   63  62    None
+4     88  52  35   2  31  81  33  20   61  48    None
+  ..  ..  ..  ..  ..  ..  ..  ..  ...  ..     ...
+4187   3   2  83   2   7  46  94  78   12  51    None
+934   99  30  32  83  60  82  23  68    4  99    None
+2042  88  39  43  99  94  23  84  56  100  28    None
+6557  58   5  62  29   4  26  91  20   62  91    None
+6196  34  97  16  52  60  61  97  95   59   5    None
+
+[100 rows x 11 columns]
+
+````
 
 
 
