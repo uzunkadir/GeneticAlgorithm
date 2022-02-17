@@ -32,7 +32,7 @@ population["fitness"] = None
 
 Elimizdeki populasyon aşağıdaki gibi oluştu.
 
-<img src="images/population_1.jpg" width="300">
+<img src="images/population_1.jpg" width="500">
 
 
 
