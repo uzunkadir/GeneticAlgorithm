@@ -190,6 +190,8 @@ generation = pd.concat([childs,mutant])
 
 ````
 
+1.nesili de oluşturduktan sonraki işlem artık bu bireylerin fitness değerlerini bulmak. Sonrasında tekrar aynı süreçleri izleyerek n iterasyon sonunda artık global maksimumu ya da global minimumu bulmak mümkün. Buradaki temel sorun ise iterasyonu durdurma şartımız ne olacak? Burada literatürde farklı yaklaşımlar mevcut. Yaklaşımlardan biri doğrudan iterasyon limiti koymaktır. Mesela 500 iterasyon yani 500 nesil aynı süreci izle ve bulunan en yüksek fitness değerine sahip birey en iyi bireydir. Diğer bir yaklaşım ise her nesildeki en iyiler listesinin fitness değerleri birbirine yaklaşıyorsa yani standart sapması azalıyorsa artık global maksimuma ya da global minimuma ulaşmış demektir. 
+
 
 
 
