@@ -41,5 +41,5 @@ Bu yüzden 1.nesile geçiyoruz. Bu nesilde artık çaprazlama ve mutasyon yapmam
 Çaprazlama yapmadan önce elimizdeki bulunan 100 bireyden fitness değerlerinin en yüksek olan 10 tanesini alalım.  
 
 
-<img src="images/girisekrani.png" width="300">
+<img src="images/girisekrani.jpg" width="300">
 
