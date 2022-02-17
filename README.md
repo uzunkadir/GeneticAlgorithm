@@ -193,7 +193,7 @@ generation = pd.concat([childs,mutant])
 
 
 
-
+ 
 
 
 
