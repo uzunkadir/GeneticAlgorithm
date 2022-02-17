@@ -16,13 +16,13 @@ Hem kod üzerinden görmek için hem de adımları daha iyi anlamak için ilk ö
 
 ```
 import pandas as pd 
-from random import randint
+import random
 
 population = []
 for row in range(1,10_000): #10 000 satırdan oluşacak
     row_i = []
     for column in range(10): #10 sütundan oluşacak
-        row_i.append(randint(1, 101)) #her değer 1 ile 100 arasındaki rastgele seçilmiş bir veriden oluşacak 
+        row_i.append(random.randint(1, 101)) #her değer 1 ile 100 arasındaki rastgele seçilmiş bir veriden oluşacak 
     population.append(row_i)
 
 population = pd.DataFrame(population)
