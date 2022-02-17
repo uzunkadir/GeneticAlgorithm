@@ -138,7 +138,7 @@ besties    = generation.iloc[:10, :]
 3340   94  72  81  36  89  66  33  20  61   24  468.197003
 ````
 
-Artık bu en iyi genlere sahip ilk 10 bireyden yeni bireyler üretebiliriz.  Çaprazlama yaparken çeşitli teknikler uygulanabilmektedir. Daha da karmaşıklaştırmamak için en basitlerinden bir tanesi ile yola devam edelim. Crossover (Çaprazlama) adında bir fonksiyon yazalım. Bu fonksiyon en iyiler listemizi alıp bunların genlerinden karma yaparak yeni bireyler üretsin. Bu fonksiyonun çeşitli algoritmalarla yazılabilir. 
+Artık bu en iyi genlere sahip ilk 10 bireyden yeni bireyler üretebiliriz.  Çaprazlama yaparken çeşitli teknikler uygulanabilmektedir. Daha da karmaşıklaştırmamak için en basitlerinden bir tanesi ile yola devam edelim. Crossover (Çaprazlama) adında bir fonksiyon yazalım. Bu fonksiyon en iyiler listemizi alıp bunların genlerinden karma yaparak yeni bireyler üretsin. Bu fonksiyon çeşitli algoritmalarla yazılabilir. 
 
 ````
 def crossover(besties):
