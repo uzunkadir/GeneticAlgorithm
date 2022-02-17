@@ -62,6 +62,15 @@ for i in range(len(generation)):
     generation.iloc[i,-1] = function(generation.iloc[i,:-1])
 ````
 
+````
+       0   1   2    3   4   5   6   7   8   9     fitness
+5387  13  84  94    8   1  69  43  30  96  42  174.965599
+7735  21  92  24   28  80  78  65  11  19  90  193.692481
+5533  10  34  54   65   8  26  99  46  58  84  201.377138
+8434   8  84   7  100  93  19  53  81  16  38  109.772199
+3376  45  76  34   99  14  64  34  62  27  85   44.491466
+````
+
 
 
 Artık elimizde hayatta kalma performanslarını ölçtüğümüz 100 birey var. Ama doğa oldukça vahşi. Bize çok daha iyi bireyler gerekiyor. Belki 0.nesilde rastgele birey alırken gerçekten de global maksimuma denk gelmiş de olabiliriz fakat bunun garantisini veremeyiz. 
