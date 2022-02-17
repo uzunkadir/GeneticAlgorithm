@@ -117,7 +117,10 @@ Bu yüzden 1.nesile geçiyoruz. Bu nesilde artık çaprazlama ve mutasyon yapmam
 Çaprazlama yapmadan önce elimizdeki bulunan 100 bireyden fitness değerlerinin en yüksek olan 10 tanesini alalım.  
 
 ````
-generation = generation.sort_values(by="fitness", ascending=False) #generation listesini fitness değerine göre büyükten küçüğe sıraladık.
+#generation listesini fitness değerine göre büyükten küçüğe sıraladık.
+generation = generation.sort_values(by="fitness", ascending=False) 
+
+# en iyi fitness değerine sahip ilk 10 bireyi alıp besties listesini oluşturduk.
 besties    = generation.iloc[:10, :]
 ````
 
@@ -134,6 +137,17 @@ besties    = generation.iloc[:10, :]
 5107   56  96  86  73  31  28  33  87  87   93  485.875843
 6182   88  35  99   2  56  86  55  17  80   67  484.368798
 3340   94  72  81  36  89  66  33  20  61   24  468.197003
+````
+
+Artık bu en iyi genlere sahip ilk 10 bireyden yeni bireyler üretebiliriz.  Çaprazlama yaparken çeşitli teknikler uygulanabilmektedir. Daha da karmaşıklaştırmamak için en basitlerinden bir tanesi ile yola devam edelim. Crossover (Çaprazlama) adında bir fonksiyon yazalım. Bu fonksiyon en iyiler listemizi alıp bunların genlerinden karma yaparak yeni bireyler üretsin. Bu fonksiyonun çeşitli algoritmalarla yazılabilir. 
+
+````
+def crossover(besties):
+    pop_child_comb = []
+    for i in range(10):
+        pop_child_comb.append(list( set(besties.iloc[:,i].values) ))
+
+
 ````
 
 
