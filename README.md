@@ -1,5 +1,4 @@
-# GeneticAlgorithm
-Genetik Algoritma'nın temelleri
+# Genetik Algoritma Temelleri
 
 Elimizde 1 milyar satırdan ve 100 sütundan oluşan devasa bir veri setimiz olduğunu düşünelim. Her bir satırdaki değerlere belirli işlemler uygulayacağımız f(x) fonksiyonumuz olsun. Bir satır için bu fonksiyonun çıktısını bulmak 1 saniyemizi alıyor olsun. Problemimiz ise bu veri setinde bu fonksiyonun çıktısının en fazla yapan değeri bulmak. Nasıl yaparız?
 
@@ -10,19 +9,20 @@ Elimizde 1 milyar satırdan ve 100 sütundan oluşan devasa bir veri setimiz old
 Yıllarca çok çeşitli optimizasyon teknikleri geliştirildi. Bunlardan ise en başarılılarından bir tanesi Genetik Algoritmalar. 
 
 GENETİK ALGORİTMA 
+
 Genetik Algoritmalar doğadaki evrimsel süreci taklit eden algoritmalardır. Mutasyon, çaprazlama ve doğal seçilim sonunda nasıl ki şuanki karmaşık ve çevresiyle en mükemmele yakın uyumdaki canlılar oluştuysa genetik algoitmalar da bunu taklit etmeye çalışmaktadır. Aynı şekilde verisetimiz evrimsel süreçteki doğayı temsil ederken fonksiyon çıktısı ise o doğadaki canlının hayatta kalma performansıdır ki bu değere de fitness değeri diyeceğiz.
 
 Hem kod üzerinden görmek için hem de adımları daha iyi anlamak için ilk önce yapay bir veriseti oluşturalım. Herkes bilgisayarında rahatça çalıştırabilmesi için fiziksel hafızayı çok doldurmayacak büyüklükte bir veri seti üretelim. 
 
 ```
 import pandas as pd 
-from random import randint
+import random
 
 population = []
 for row in range(1,10_000): #10 000 satırdan oluşacak
     row_i = []
     for column in range(10): #10 sütundan oluşacak
-        row_i.append(randint(1, 101)) #her değer 1 ile 100 arasındaki rastgele seçilmiş bir veriden oluşacak 
+        row_i.append(random.randint(1, 101)) #her değer 1 ile 100 arasındaki rastgele seçilmiş bir veriden oluşacak 
     population.append(row_i)
 
 population = pd.DataFrame(population)
@@ -138,7 +138,7 @@ besties    = generation.iloc[:10, :]
 3340   94  72  81  36  89  66  33  20  61   24  468.197003
 ````
 
-Artık bu en iyi genlere sahip ilk 10 bireyden yeni bireyler üretebiliriz.  Çaprazlama yaparken çeşitli teknikler uygulanabilmektedir. Daha da karmaşıklaştırmamak için en basitlerinden bir tanesi ile yola devam edelim. Crossover (Çaprazlama) adında bir fonksiyon yazalım. Bu fonksiyon en iyiler listemizi alıp bunların genlerinden karma yaparak yeni bireyler üretsin. Bu fonksiyonun çeşitli algoritmalarla yazılabilir. 
+Artık bu en iyi genlere sahip ilk 10 bireyden yeni bireyler üretebiliriz.  Çaprazlama yaparken çeşitli teknikler uygulanabilmektedir. Daha da karmaşıklaştırmamak için en basitlerinden bir tanesi ile yola devam edelim. Crossover (Çaprazlama) adında bir fonksiyon yazalım. Bu fonksiyon en iyiler listemizi alıp bunların genlerinden karma yaparak yeni bireyler üretsin. Bu fonksiyon çeşitli algoritmalarla yazılabilir. 
 
 ````
 def crossover(besties):
@@ -190,10 +190,12 @@ generation = pd.concat([childs,mutant])
 
 ````
 
+1.nesili de oluşturduktan sonraki işlem artık bu bireylerin fitness değerlerini bulmak. Sonrasında tekrar aynı süreçleri izleyerek n iterasyon sonunda artık global maksimumu ya da global minimumu bulmak mümkün. Buradaki temel sorun ise iterasyonu durdurma şartımız ne olacak? Burada literatürde farklı yaklaşımlar mevcut. Yaklaşımlardan biri doğrudan iterasyon limiti koymaktır. Mesela 500 iterasyon yani 500 nesil aynı süreci izle ve bulunan en yüksek fitness değerine sahip birey en iyi bireydir. Diğer bir yaklaşım ise her nesildeki en iyiler listesinin fitness değerleri birbirine yaklaşıyorsa yani standart sapması azalıyorsa artık global maksimuma ya da global minimuma ulaşmış demektir. 
 
 
 
 
+ 
 
 
 
